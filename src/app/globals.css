@@ -2,20 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #25282e;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide the scrollbar track and arrows */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust for vertical scrollbar */
+  height: 8px; /* Adjust for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Hide track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #393e47; /* Style the thumb */
+  border-radius: 4px; /* Optional: Make the thumb rounded */
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* Hide arrows */
+}
+
+/* Fallback for Firefox */
+.scroll-container {
+  scrollbar-width: thin; /* Makes the scrollbar smaller */
+  scrollbar-color: #393e47 transparent; /* Thumb color | Track color */
 }
