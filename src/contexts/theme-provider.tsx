@@ -1,5 +1,6 @@
 "use client";
 
+import { RiMoonFoggyFill, RiSunFoggyFill } from "@remixicon/react";
 import { createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
@@ -13,7 +14,7 @@ const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    let preferedTheme: Theme = 'light';
+    const preferedTheme: Theme = 'light';
     if (typeof window !== "undefined") {
       let preferedTheme = (localStorage.getItem("theme") as Theme);
 
@@ -37,6 +38,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
+      <button className="fixed z-30 top-5 right-5 flex justify-center items-center p-2 border-gray-700 hover:bg-gray-400/40 dark:hover:bg-zinc-800/80 rounded-xl">
+        <RiMoonFoggyFill onClick={() => setTheme('dark')} size={28} className="text-gray-900 scale-100 dark:scale-0" />
+        <RiSunFoggyFill onClick={() => setTheme('light')} size={28} className="text-gray-200 absolute scale-0 dark:scale-100" />
+      </button>
       {children}
     </ThemeContext.Provider>
   );

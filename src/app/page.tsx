@@ -1,22 +1,16 @@
 "use client"
-import { useTheme } from "@/contexts/theme-provider";
-import { RiMoonFoggyFill, RiSunFoggyFill } from "@remixicon/react";
 import '@/styles/home.css';
 import Carousel from "@/components/ui/Carousel";
 import LogoBig from "@/components/ui/LogoBig";
 import AvatarCustomizer from "@/components/ui/AvatarCustomizer";
+import Image from 'next/image';
 
 export default function Home() {
-  const { setTheme } = useTheme();
+
   return (
     <div className="h-full w-full relative flex items-center justify-center">
-      <button className="fixed z-20 top-5 right-5 flex justify-center items-center p-2 border-gray-700 hover:bg-gray-400/40 dark:hover:bg-zinc-800/80 rounded-xl">
-        <RiMoonFoggyFill onClick={() => setTheme('dark')} size={28} className="text-gray-900 scale-100 dark:scale-0" />
-        <RiSunFoggyFill onClick={() => setTheme('light')} size={28} className="text-gray-200 absolute scale-0 dark:scale-100" />
-      </button>
 
-
-      <div id="home" className=" z-10 flex flex-col items-center">
+      <div id="home" className=" z-10 w-full flex flex-col items-center">
 
         <LogoBig />
 
@@ -27,15 +21,15 @@ export default function Home() {
         <div className="footer w-full pt-5 pb-10 bg-sky-100/60 dark:bg-ngray/80">
 
 
-          <div className="grid auto-rows-min justify-center lg:grid-cols-3 lg:px-12 xl:px-20 gap-y-10 lg:gap-5">
+          <div className="grid max-w-7xl m-auto auto-rows-min justify-center lg:grid-cols-3 lg:px-12 xl:px-20 gap-y-10 lg:gap-5">
 
             <div className="section-panel relative border-gray-300 dark:border-stone-700 border backdrop-blur-md p-5 rounded-xl text-gray-600 dark:text-gray-400">
-              <img className="icon" src="img/about.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">About</h2>
+              <Image width="0" height="0" alt='info' className="icon" src="/img/about.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">About</h2>
               <b>skribbl.io </b><span data-translate="text">is a free online multiplayer drawing and guessing pictionary game.</span><br /><br /><span data-translate="text">A normal game consists of a few rounds, where every round a player has to draw their chosen word and others have to guess it to gain points!</span><br /><br /><span data-translate="text">The person with the most points at the end of the game, will then be crowned as the winner!</span><br /><span data-translate="text">Have fun!</span>
             </div>
 
             <div className="section-panel relative border-gray-300 dark:border-stone-700 border backdrop-blur-md p-5 rounded-xl text-gray-600 dark:text-gray-400">
-              <img className="icon" src="img/news.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">News</h2>
+              <Image width="0" height="0" alt='info' className="icon" src="/img/news.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">News</h2>
 
               <div className="overflow-y-scroll max-h-[24rem]">
                 <h3 className="text-blue-500 font-medium tracking-wide">Update!!</h3>
@@ -45,8 +39,7 @@ export default function Home() {
             </div>
 
             <div className="section-panel relative border-gray-300 dark:border-stone-700 border backdrop-blur-md p-5 rounded-xl text-gray-500 dark:text-gray-400">
-              <img className="icon" src="img/how.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">How to play</h2>
-
+              <Image width="0" height="0" alt='info' className="icon" src="/img/how.gif" /><h2 data-translate="text" className="text-gray-800 dark:text-gray-200">How to play</h2>
               <Carousel />
             </div>
           </div>

@@ -1,31 +1,19 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
-import { Tooltip, Input, Select, SelectSection, SelectItem } from "@nextui-org/react";
+import { Tooltip, Input, Select, SelectItem } from "@nextui-org/react";
 import { avatarRange, getBgPosition, getRandomIntInRange, languageOptions } from '@/lib/utils';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+import Image from 'next/image';
 
 const AvatarCustomizer = () => {
-  const [name, setName] = useState<string>(() => {
-    if (window) {
-      if (localStorage.getItem('name'))
-        return localStorage.getItem('name') as string;
-    }
-    return '';
-  });
 
-  const [selectedLanguage, setSelectedLanguage] = useState(() => {
-    if (window) {
-      if (localStorage.getItem('lang'))
-        return localStorage.getItem('lang') as string;
-    }
-    return '0';
-  });
-
-  const [avatar, setAvatar] = useState<number[]>(() => {
-    if (window) {
-      if (localStorage.getItem('avatar'))
-        return JSON.parse(localStorage.getItem('avatar') as string);
-    }
-    return [5, 5, 5];
-  });
+  const [loadingAvatar, setLoadingAvatar] = useState<boolean>(true);
+  const [name, setName] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('0');
+  const [avatar, setAvatar] = useState<number[]>([5, 5, 5]);
 
   // const [avatarStyle, setAvatarStyle] = useState({
   //   color: { backgroundPosition: '-500% 0%' },
@@ -36,17 +24,25 @@ const AvatarCustomizer = () => {
   // });
 
   useEffect(() => {
-    handleRandomize();
-    return () => {
-    }
-  }, [])
+    setLoadingAvatar(true);
+    if (typeof window !== "undefined") {
+      const local_name = localStorage.getItem('name');
+      const local_lang = localStorage.getItem('lang');
+      const local_avatar = localStorage.getItem('avatar');
 
-  console.log("avatar: ", avatar);
+      if (local_name) setName(local_name);
+      if (local_lang) setSelectedLanguage(local_lang);
+      if (local_avatar) setAvatar(JSON.parse(local_avatar));
+      else
+        handleRandomize();
+    }
+    setLoadingAvatar(false);
+  }, [])
 
 
   const handleAvatarChange = (dir: ("left" | "right"), trait: 0 | 1 | 2) => {
     setAvatar((prev) => {
-      const newAvatar = [...prev];
+      const newAvatar = [...prev as number[]];
       const range = avatarRange[trait];
 
       newAvatar[trait] = dir === "left"
@@ -56,8 +52,6 @@ const AvatarCustomizer = () => {
       return newAvatar;
     });
   };
-
-
 
 
   const handleRandomize = () => {
@@ -73,7 +67,7 @@ const AvatarCustomizer = () => {
     console.log('Name:', name);
     console.log('Selected Language:', selectedLanguage);
 
-    if (typeof window != undefined) {
+    if (typeof window !== "undefined") {
       localStorage.setItem('name', name);
       localStorage.setItem('avatar', JSON.stringify(avatar));
     }
@@ -82,7 +76,7 @@ const AvatarCustomizer = () => {
 
 
   return (
-    <div className="panel mt-5 mb-10 bg-white dark:bg-ngray w-[400px] flex flex-col justify-center p-5 shadow-[0px_0px_50px_10px_rgba(0,113,255,0.4)] dark:shadow-[0px_0px_50px_10px_rgba(225,225,225,0.1)] rounded-xl">
+    <div className="panel mt-5 mb-10 bg-white dark:bg-ngray w-[400px] flex flex-col justify-center p-5 shadow-[0px_0px_50px_10px_rgba(125,211,252,0.3)] dark:shadow-[0px_0px_50px_10px_rgba(225,225,225,0.1)] rounded-xl">
 
       <div className="container-name-lang flex gap-2 mb-5">
         <div key={'name-input'} className="flex w-3/5 flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
@@ -122,13 +116,16 @@ const AvatarCustomizer = () => {
           <div onClick={() => handleAvatarChange("left", 0)} className="arrow left" data-avatar-index="0"></div>
         </div>
         <div className="container">
-          <div className="avatar fit h-full w-full">
-            <div className="color" style={{ backgroundPosition: getBgPosition(avatar[0]) }}></div>
-            <div className="eyes bounce" style={{ backgroundPosition: getBgPosition(avatar[1]) }}></div>
-            <div className="mouth bounce" style={{ backgroundPosition: getBgPosition(avatar[2]) }}></div>
-            <div className="owner" style={{ backgroundPosition: getBgPosition(avatar[4]) }}></div>
-            {/* <div className="special" style={{ backgroundPosition: getBgPosition(avatar[3]) }}></div> */}
-          </div>
+          {
+            !loadingAvatar && (
+              <div className="avatar fit h-full w-full">
+                <div className="color" style={{ backgroundPosition: getBgPosition(avatar[0]) }}></div>
+                <div className="eyes bounce" style={{ backgroundPosition: getBgPosition(avatar[1]) }}></div>
+                <div className="mouth bounce" style={{ backgroundPosition: getBgPosition(avatar[2]) }}></div>
+                <div className="owner" style={{ backgroundPosition: getBgPosition(avatar[4]) }}></div>
+              </div>
+            )
+          }
         </div>
         <div className="arrows right">
           <div onClick={() => handleAvatarChange("right", 1)} className="arrow right" data-avatar-index="1"></div>
@@ -138,17 +135,20 @@ const AvatarCustomizer = () => {
 
         <Tooltip key={'primary'} showArrow color={"primary"} content={'Randomize your avatar'} radius='sm' className="capitalize">
           <button onClick={handleRandomize} className='absolute top-3 right-3'>
-            <img src="/img/randomize.gif" alt="" />
+            <Image src={'/img/randomize.gif'} alt='randomize-icon' width={40} height={40} />
+            {/* <img src="/img/randomize.gif" alt="" /> */}
           </button>
         </Tooltip>
       </div>
 
-      <button className="text-gray-100 button-play bg-green-600 p-2 rounded-md text-xl my-2" onClick={handlePlay}>
+      <motion.button whileTap={{ scale: 0.9 }} className="text-gray-100 button-play bg-green-600 p-2 rounded-md text-xl my-2" onClick={handlePlay}>
         <span>Play!</span>
-      </button>
-      <button className="text-gray-100 button-create bg-blue-600 p-2 rounded-md text-xl">
-        <span>Create Private Room</span>
-      </button>
+      </motion.button>
+      <Link href={'/game'} className='w-full'>
+        <motion.button whileTap={{ scale: 0.9 }} className="text-gray-100 button-create bg-blue-600 p-2 rounded-md text-xl w-full">
+          <span>Create Private Room</span>
+        </motion.button>
+      </Link>
     </div>
   );
 };

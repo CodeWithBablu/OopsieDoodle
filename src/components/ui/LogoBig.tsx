@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 
 const LogoBig = () => {
   return (
     <div className="logo-big my-10">
-      <a href="/">
-        <img src="/img/logo.gif" alt="Logo" />
-      </a>
-      <div className="avatar-container h-[48px] flex justify-center">
+      <Link href="/">
+        <Image src="/img/logo.gif" width="0" height="0" className="h-20 w-auto" alt="Logo" />
+      </Link>
+
+      <div className="avatar-container h-[48px] mt-5 flex justify-center">
         <motion.div whileTap={{ scale: 1.2 }} className="avatar">
           <div className="color" style={{ backgroundPosition: "0% 0%" }}></div>
           <div className="eyes" style={{ backgroundPosition: "-900% -200%" }}></div>

@@ -21,6 +21,87 @@ export const getBgPosition = (value: number) => {
   return `${-(value % 10) * 100}% ${-Math.floor(value / 10) * 100}%`;
 }
 
+export interface Player {
+  id: number,
+  name: string,
+  points: number,
+  avatar: number[],
+  owner: boolean,
+}
+
+export const playersJoined: Player[] = [
+  {
+    id: 1,
+    name: "Zara Night",
+    points: 120,
+    avatar: [3, 28, 10],
+    owner: false,
+  },
+  {
+    id: 2,
+    name: "Oliver King",
+    points: 95,
+    avatar: [8, 22, 6],
+    owner: false,
+  },
+  {
+    id: 3,
+    name: "Liam Fox",
+    points: 150,
+    avatar: [15, 42, 20],
+    owner: true,
+  },
+  {
+    id: 4,
+    name: "Sophia Blaze",
+    points: 110,
+    avatar: [9, 5, 17],
+    owner: false,
+  },
+  {
+    id: 5,
+    name: "Jackson Wolf",
+    points: 80,
+    avatar: [20, 30, 8],
+    owner: false,
+  },
+  {
+    id: 6,
+    name: "Ava Storm",
+    points: 135,
+    avatar: [4, 41, 15],
+    owner: false,
+  },
+  {
+    id: 7,
+    name: "Mason Hunter",
+    points: 90,
+    avatar: [10, 15, 5],
+    owner: false,
+  },
+  {
+    id: 8,
+    name: "Emily Rose",
+    points: 125,
+    avatar: [12, 48, 22],
+    owner: false,
+  },
+  {
+    id: 9,
+    name: "Daniel Rivers",
+    points: 115,
+    avatar: [5, 19, 27],
+    owner: false,
+  },
+  {
+    id: 10,
+    name: "Mia Sky",
+    points: 140,
+    avatar: [27, 35, 13],
+    owner: false,
+  },
+];
+
 export const languageOptions: { [key: string]: string } = {
   0: "English",
   1: "German",

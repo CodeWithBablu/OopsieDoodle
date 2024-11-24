@@ -32,10 +32,8 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <NextUIProvider>
-            <div className="relative h-full dark:bg-ngray bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2]">
-              <div className="max-w-7xl m-auto h-full">
-                {children}
-              </div>
+            <div className="relative h-full w-full dark:bg-ngray bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2]">
+              {children}
               {/* Radial gradient for the container to give a faded look */}
               <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-ngray bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             </div>
