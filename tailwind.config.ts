@@ -20,6 +20,9 @@ export default {
       boxShadow: {
         'inner-bottom': 'inset 0px -10px 15px -5px rgba(0, 0, 0, 0.3)',
       },
+      screens: {
+        'landscape': { 'raw': '(min-aspect-ratio: 1 / 1)' }, // Greater than 1:1
+      },
       colors: {
         ngray: '#25282e',
         background: 'hsl(var(--background))',
@@ -64,7 +67,7 @@ export default {
         }
       },
       backgroundImage: {
-        gradientDark: 'var(--gradient-dark)',
+        gradientRed: 'var(--GRADIENT-RED)',
         gradientLight: 'var(--gradient-light)',
         gradientNgray: 'var(--gradient-ngray)',
         gradientNgrayWhite: 'var(--gradient-ngray-white)',

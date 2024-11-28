@@ -97,7 +97,7 @@ const AvatarCustomizer = () => {
             autoComplete="off"
             maxLength={21}
             value={name}
-            className=' dark:border-gray-500 focus-visible:ring-blue-600 focus-visible:border-none outline-none'
+            className=' dark:border-gray-500 focus-visible:border-none outline-none'
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -107,7 +107,7 @@ const AvatarCustomizer = () => {
           name='lang'
           defaultValue='0'
         >
-          <SelectTrigger className=' dark:border-gray-500 focus:ring-blue-600 focus:border-none outline-none'>
+          <SelectTrigger className=' dark:border-gray-500 focus:border-none outline-none'>
             <SelectValue placeholder="Lang" />
           </SelectTrigger>
           <SelectContent>

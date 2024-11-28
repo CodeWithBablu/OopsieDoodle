@@ -1,0 +1,19 @@
+services:
+  redis-stack:
+    image: redis/redis-stack:latest
+    container_name: redis-stack
+    ports:
+      - "6379:6379"  # Exposes Redis port for app communication
+      - "8001:8001"  # Redis-Insight Web UI port (optional)
+    volumes:
+      - redis-data:/data  # Mount a Docker volume for data persistence
+    environment:
+      - REDIS_PASSWORD=bablu  # Set a password for Redis (optional)
+    restart: always  # Restart the container if it fails
+    #command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec", "--save", "900", "1", "--save", "300", "10", "--save", "60", "10000"]  # Enable AOF and RDB persistence
+
+volumes:
+  redis-data:
+    driver: local  # Docker will create and manage this volume for persistence
+
+

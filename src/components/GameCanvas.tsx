@@ -12,18 +12,19 @@ import {
 } from "@/components/ui/select";
 import { roomSettings } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Checkbox } from "./ui/checkbox";
 
 // import { Textarea } from "@nextui-org/react";
 function GameCanvas() {
   return (
     <>
-      <div className="absolute inset-0 h-full w-full rounded-xl blur-xl bg-gradientDark dark:bg-gradientLight
-   opacity-60 -z-10"></div>
+      {/* <div className="absolute inset-0 h-full w-full rounded-xl blur-xl bg-gradientRed opacity-60 -z-10"></div> */}
+
       <canvas width={800} height={600} className="w-full h-auto rounded-xl" style={{ cursor: 'default' }}></canvas>
 
       <div className="overlay absolute inset-0 h-full w-full p-2 bg-gray-200"></div>
 
-      <div className="overlay-content absolute inset-0 h-full w-full p-2 bg-gradient-to-tr from-gray-700 to-zinc-700 to-100%">
+      <div className="overlay-content absolute inset-0 h-full w-full md:p-2 bg-gradient-to-tr from-zinc-900 to-zinc-800">
         <div className="text"></div>
         <div className="words"></div>
 
@@ -49,8 +50,8 @@ function GameCanvas() {
           <div className="ranks"></div>
         </div>
 
-        <div className="room show flex flex-col gap-2 w-full h-full">
-          <div className="group-settings py-3 pr-1 overflow-y-scroll scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin">
+        <div className="room show flex flex-col gap-2 w-full h-full animate-in zoom-in-50 slide-in-from-top-full ease-out duration-300">
+          <div className="group-settings md:py-3 pr-1 overflow-y-scroll scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin">
             <div className="key">
               <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_1.gif" alt="Players Setting" />
               <span>Players</span>
@@ -62,7 +63,7 @@ function GameCanvas() {
                 name='players'
                 defaultValue='8'
               >
-                <SelectTrigger className='border-gray-500 shrink-0 focus:ring-blue-600 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
                   <SelectValue placeholder="players" />
                 </SelectTrigger>
                 <SelectContent>
@@ -77,7 +78,7 @@ function GameCanvas() {
             </div>
 
 
-            <div className="key">
+            <div className="key drop-shadow-xl">
               <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_2.gif" alt="Drawtime Setting" />
               <span data-translate="text">Drawtime</span>
             </div>
@@ -87,7 +88,7 @@ function GameCanvas() {
                 name='drawtime'
                 defaultValue='60'
               >
-                <SelectTrigger className='border-gray-500 shrink-0 focus:ring-blue-600 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
                   <SelectValue placeholder="Drawtime" />
                 </SelectTrigger>
                 <SelectContent>
@@ -110,7 +111,7 @@ function GameCanvas() {
                 name='rounds'
                 defaultValue='3'
               >
-                <SelectTrigger className='border-gray-500 shrink-0 focus:ring-blue-600 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
                   <SelectValue placeholder="Rounds" />
                 </SelectTrigger>
                 <SelectContent>
@@ -133,7 +134,7 @@ function GameCanvas() {
                 name='modes'
                 defaultValue='Normal'
               >
-                <SelectTrigger className='border-gray-500 shrink-0 focus:ring-blue-600 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
                   <SelectValue placeholder="Modes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -156,7 +157,7 @@ function GameCanvas() {
                 name='Wordcount'
                 defaultValue='3'
               >
-                <SelectTrigger className='border-gray-500 shrink-0 focus:ring-blue-600 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
                   <SelectValue placeholder="Word Counts" />
                 </SelectTrigger>
                 <SelectContent>
@@ -169,18 +170,22 @@ function GameCanvas() {
               </Select>
             </div>
 
-
           </div>
 
           <div className="group-customwords">
-            <div className="game-room-name">
+            <div className="game-room-name text-[1.2em] sm:text-[1em] lg:text-[1.2em]">
               <div data-translate="text">Custom words</div>
-              <div className="game-room-checkbox flex items-center gap-2">
-                <label htmlFor="customwords" data-translate="text">
+
+              <div className="game-room-checkbox flex items-center space-x-2">
+                <label
+                  htmlFor="customwords"
+                  className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
                   Use custom words only
                 </label>
-                <input id="customwordsonly" type="checkbox" className="h-5 w-5" />
+                <Checkbox id="customwords" className="w-5 h-5 landscape:w-6 landscape:h-6" />
               </div>
+
             </div>
             {/* <textarea
               id="item-settings-customwords"
@@ -194,16 +199,16 @@ function GameCanvas() {
               id="customwords"
               maxLength={20000}
               spellCheck={false}
-              className="flex-auto rounded-lg p-3 md:text-lg bg-zinc-800 border-2 border-gray-600 focus-visible:border-blue-500 focus-visible:ring-0 outline-none"
+              className="flex-auto rounded-lg p-3 md:text-lg bg-zinc-800 border-2 border-slate-800 outline-none"
               placeholder="Minimum of 10 words. 1-32 characters per word! 20000 characters maximum. Separated by a , (comma)" />
           </div>
 
-          <div className="group-buttons flex items-center gap-2 w-full h-14 text-gray-200 text-xl font-semibold tracking-wide">
-            <motion.button whileTap={{ scale: 0.95 }} id="button-start-game" className="bg-green-500 h-full w-3/5 rounded-md">
+          <div className="group-buttons flex items-center gap-2 w-full text-[1.4em] landscape:text-[1.8em] h-[2em] max-h-16 text-gray-200 text-xl font-semibold tracking-wide">
+            <motion.button whileTap={{ scale: 0.95 }} id="button-start-game" className="bg-green-500 h-full w-3/5 rounded-sm landscape:rounded-md">
               <span data-translate="text">Start!</span>
             </motion.button>
-            <motion.button whileTap={{ scale: 0.95 }} id="button-invite" className="bg-blue-500 h-full w-2/5 rounded-md flex justify-center items-center gap-2">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/link.svg" alt="Invite Icon" />
+            <motion.button whileTap={{ scale: 0.95 }} id="button-invite" className="bg-blue-500 h-full w-2/5 rounded-sm landscape:rounded-md flex justify-center items-center gap-2">
+              <Image width="0" height="0" className="h-[1.4em] landscape:h-8 w-auto" unoptimized src="/img/link.svg" alt="Invite Icon" />
               <span data-translate="text">Invite</span>
             </motion.button>
           </div>
