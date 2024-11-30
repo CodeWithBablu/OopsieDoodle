@@ -50,10 +50,10 @@ function GameCanvas() {
           <div className="ranks"></div>
         </div>
 
-        <div className="room show flex flex-col gap-2 w-full h-full animate-in zoom-in-50 slide-in-from-top-full ease-out duration-300">
-          <div className="group-settings md:py-3 pr-1 overflow-y-scroll scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin">
+        <div className="room show flex flex-col gap-1 sm:gap-2 w-full h-full animate-in zoom-in-50 slide-in-from-top-full ease-out duration-300">
+          <div className="group-settings py-2 md:py-3 pr-1 overflow-y-auto scrollbar-thumb-zinc-600 scrollbar-track-transparent scrollbar-thin">
             <div className="key">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_1.gif" alt="Players Setting" />
+              <Image width="0" height="0" className="h-[2.3em] landscape:h-8 w-auto" unoptimized src="/img/setting_1.gif" alt="Players Setting" />
               <span>Players</span>
             </div>
             <div className="value">
@@ -63,7 +63,7 @@ function GameCanvas() {
                 name='players'
                 defaultValue='8'
               >
-                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 h-6 sm:h-9 rounded-none landscape:rounded-sm focus:border-none focus:ring-primary outline-none'>
                   <SelectValue placeholder="players" />
                 </SelectTrigger>
                 <SelectContent>
@@ -79,7 +79,7 @@ function GameCanvas() {
 
 
             <div className="key drop-shadow-xl">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_2.gif" alt="Drawtime Setting" />
+              <Image width="0" height="0" className="h-[2.3em] landscape:h-8 w-auto" unoptimized src="/img/setting_2.gif" alt="Drawtime Setting" />
               <span data-translate="text">Drawtime</span>
             </div>
             <div className="value">
@@ -88,7 +88,7 @@ function GameCanvas() {
                 name='drawtime'
                 defaultValue='60'
               >
-                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 h-6 sm:h-9 rounded-none landscape:rounded-sm focus:border-none focus:ring-primary outline-none'>
                   <SelectValue placeholder="Drawtime" />
                 </SelectTrigger>
                 <SelectContent>
@@ -102,7 +102,7 @@ function GameCanvas() {
             </div>
 
             <div className="key">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_3.gif" alt="Rounds Setting" />
+              <Image width="0" height="0" className="h-[2.3em] landscape:h-8 w-auto" unoptimized src="/img/setting_3.gif" alt="Rounds Setting" />
               <span data-translate="text">Rounds</span>
             </div>
             <div className="value">
@@ -111,7 +111,7 @@ function GameCanvas() {
                 name='rounds'
                 defaultValue='3'
               >
-                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 h-6 sm:h-9 rounded-none landscape:rounded-sm focus:border-none focus:ring-primary outline-none'>
                   <SelectValue placeholder="Rounds" />
                 </SelectTrigger>
                 <SelectContent>
@@ -125,7 +125,7 @@ function GameCanvas() {
             </div>
 
             <div className="key">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_6.gif" alt="Game Mode Setting" />
+              <Image width="0" height="0" className="h-[2.3em] landscape:h-8 w-auto" unoptimized src="/img/setting_6.gif" alt="Game Mode Setting" />
               <span data-translate="text">Game Mode</span>
             </div>
             <div className="value">
@@ -134,7 +134,7 @@ function GameCanvas() {
                 name='modes'
                 defaultValue='Normal'
               >
-                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 h-6 sm:h-9 rounded-none landscape:rounded-sm focus:border-none focus:ring-primary outline-none'>
                   <SelectValue placeholder="Modes" />
                 </SelectTrigger>
                 <SelectContent>
@@ -148,7 +148,7 @@ function GameCanvas() {
             </div>
 
             <div className="key">
-              <Image width="0" height="0" className="h-8 w-auto" unoptimized src="/img/setting_4.gif" alt="Word Count Setting" />
+              <Image width="0" height="0" className="h-[2.3em] landscape:h-8 w-auto" unoptimized src="/img/setting_4.gif" alt="Word Count Setting" />
               <span data-translate="text">Word Count</span>
             </div>
             <div className="value">
@@ -157,7 +157,7 @@ function GameCanvas() {
                 name='Wordcount'
                 defaultValue='3'
               >
-                <SelectTrigger className='border-stone-600 shrink-0 focus:border-none outline-none'>
+                <SelectTrigger className='border-stone-600 shrink-0 h-6 sm:h-9 rounded-none landscape:rounded-sm focus:border-none focus:ring-primary outline-none'>
                   <SelectValue placeholder="Word Counts" />
                 </SelectTrigger>
                 <SelectContent>
@@ -172,8 +172,8 @@ function GameCanvas() {
 
           </div>
 
-          <div className="group-customwords">
-            <div className="game-room-name text-[1.2em] sm:text-[1em] lg:text-[1.2em]">
+          <div className="group-customwords px-1 sm:px-2">
+            <div className="game-room-name text-[1.4em] sm:text-[1.2em] mb-1">
               <div data-translate="text">Custom words</div>
 
               <div className="game-room-checkbox flex items-center space-x-2">
@@ -199,16 +199,16 @@ function GameCanvas() {
               id="customwords"
               maxLength={20000}
               spellCheck={false}
-              className="flex-auto rounded-lg p-3 md:text-lg bg-zinc-800 border-2 border-slate-800 outline-none"
+              className="flex-auto rounded-lg p-1 md:p-3 text-sm lg:text-lg bg-zinc-800 border-2 border-slate-800 outline-none"
               placeholder="Minimum of 10 words. 1-32 characters per word! 20000 characters maximum. Separated by a , (comma)" />
           </div>
 
-          <div className="group-buttons flex items-center gap-2 w-full text-[1.4em] landscape:text-[1.8em] h-[2em] max-h-16 text-gray-200 text-xl font-semibold tracking-wide">
+          <div className="group-buttons flex items-center gap-2 w-full text-[1.2em] landscape:text-[1.8em] h-8 sm:h-12  max-h-16 text-gray-200 text-xl font-semibold tracking-wide">
             <motion.button whileTap={{ scale: 0.95 }} id="button-start-game" className="bg-green-500 h-full w-3/5 rounded-sm landscape:rounded-md">
               <span data-translate="text">Start!</span>
             </motion.button>
             <motion.button whileTap={{ scale: 0.95 }} id="button-invite" className="bg-blue-500 h-full w-2/5 rounded-sm landscape:rounded-md flex justify-center items-center gap-2">
-              <Image width="0" height="0" className="h-[1.4em] landscape:h-8 w-auto" unoptimized src="/img/link.svg" alt="Invite Icon" />
+              <Image width="0" height="0" className="h-[1.2em] landscape:h-8 w-auto" unoptimized src="/img/link.svg" alt="Invite Icon" />
               <span data-translate="text">Invite</span>
             </motion.button>
           </div>

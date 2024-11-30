@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scrollbar-thumb-zinc-700 scrollbar-track-transparent">
+    <html lang="en" className="scrollbar-thumb-zinc-500 scrollbar-track-transparent">
       <body>
         <ThemeWrapper>{children}</ThemeWrapper>
       </body>

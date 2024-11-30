@@ -18,9 +18,13 @@
     --BORDER_GAP: 6px;
     --FONT_SIZE: 14px;
 
+    --COLOR_TOOL_TEXT: black;
+    --COLOR_TOOL_BASE: white;
+
     /*//// Gradient  */
     --GRADIENT-RED: linear-gradient(to top left, #5614b0, #dbd65c);
     /*/ /// Drop Shadow  */
+    --DROPSHADOW: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.25));
     --DROP_GRAY: drop-shadow(3px 5px 10px #565a60);
   }
 
@@ -141,6 +145,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }

@@ -26,7 +26,7 @@ function Players() {
                 <div className="icon muted hidden"></div>
               </div>
 
-              <div className="player-avatar-container">
+              <div className="player-avatar-container w-[48px] h-[48px]">
                 <div className="avatar fit h-full w-full">
                   <div className="color" style={{ backgroundPosition: getBgPosition(player.avatar[0]) }}></div>
                   <div className="eyes bounce" style={{ backgroundPosition: getBgPosition(player.avatar[1]) }}></div>

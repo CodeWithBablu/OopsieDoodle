@@ -1,25 +1,29 @@
 "use client"
-import { useRef } from 'react'
+// import { useEffect, useRef } from 'react'
+import { Howl } from 'howler';
 
 type SoundType = "join" | "leave" | "roundStart" | "roundSuccess" | "roundEnd" | "playerGuessed" | "tick";
+
 function useDoodleSound() {
+  // const audio = useRef<Record<SoundType, Howl>>({ join: new Howl({ src: ['/audio/join.ogg'] })});
 
-  const audios = useRef<Record<SoundType, HTMLAudioElement>>({
-    join: new Audio('/audio/join.ogg'),
-    leave: new Audio('/audio/leave.ogg'),
-    roundStart: new Audio('/audio/roundStart.ogg'),
-    roundSuccess: new Audio('/audio/roundEndSuccess.ogg'),
-    roundEnd: new Audio('/audio/roundEndFailure.ogg'),
-    playerGuessed: new Audio('/audio/playerGuessed.ogg'),
-    tick: new Audio('/audio/tick.ogg'),
-  });
-
+  // const audios = useRef<Record<SoundType, Howl>>({
+  //   join: new Howl({ src: ['/audio/join.ogg'] }),
+  //   leave: new Howl({ src: ['/audio/leave.ogg'] }),
+  //   roundStart: new Howl({ src: ['/audio/roundStart.ogg'] }),
+  //   roundSuccess: new Howl({ src: ['/audio/roundEndSuccess.ogg'] }),
+  //   roundEnd: new Howl({ src: ['/audio/roundEndFailure.ogg'] }),
+  //   playerGuessed: new Howl({ src: ['/audio/playerGuessed.ogg'] }),
+  //   tick: new Howl({ src: ['/audio/tick.ogg'] }),
+  // });
+  const getAudio = (eventType: SoundType) => {
+    return new Howl({ src: [`/audio/${eventType}.ogg`] });
+  }
   const playSound = (eventType: SoundType) => {
-    const doodleSound = audios.current[eventType];
+
+    const doodleSound = getAudio(eventType);
     if (doodleSound) {
-      doodleSound.currentTime = 0; //reset to start
       doodleSound.play()
-        .catch((err) => console.error(`Failed to play sound "${eventType}":`, err));;
     }
   }
 
