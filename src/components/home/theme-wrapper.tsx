@@ -28,6 +28,7 @@ export function ThemeWrapper({ children }: { children: React.ReactNode }) {
 
   const [mounted, setMounted] = useState(false);
 
+
   // Ensure the component has mounted before rendering, preventing hydration issues
   useEffect(() => {
     setMounted(true);

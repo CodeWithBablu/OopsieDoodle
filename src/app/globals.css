@@ -20,6 +20,7 @@
 
     --COLOR_TOOL_TEXT: black;
     --COLOR_TOOL_BASE: white;
+    --COLOR_TOOL_HOVER: #c5c5c5;
 
     /*//// Gradient  */
     --GRADIENT-RED: linear-gradient(to top left, #5614b0, #dbd65c);
@@ -28,7 +29,7 @@
     --DROP_GRAY: drop-shadow(3px 5px 10px #565a60);
   }
 
-  @media (max-aspect-ratio: 1 / 1) {
+  @media (max-aspect-ratio: 1 / 1.5) {
     :root {
       --PLAYERS_PER_PAGE: 9999;
       --BORDER_GAP: 0.5vw;

@@ -20,7 +20,7 @@ function GameCanvas() {
     <>
       {/* <div className="absolute inset-0 h-full w-full rounded-xl blur-xl bg-gradientRed opacity-60 -z-10"></div> */}
 
-      <canvas width={800} height={600} className="w-full h-auto rounded-xl" style={{ cursor: 'default' }}></canvas>
+      <canvas width={800} height={600} className="w-full h-auto max-h-[450px] landscape:max-h-none rounded-xl" style={{ cursor: 'default' }}></canvas>
 
       <div className="overlay absolute inset-0 h-full w-full p-2 bg-gray-200"></div>
 

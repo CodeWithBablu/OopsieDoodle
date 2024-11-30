@@ -13,16 +13,12 @@ function Game() {
   const { playSound } = useDoodleSound();
 
   useEffect(() => {
-    console.log("play")
     playSound("join");
-
-    return () => {
-    }
   }, [playSound]);
 
   return (
     <div id='game' className='h-[100vh] overflow-hidden relative z-20 max-w-[1310px] m-auto lg:p-2'>
-      <div id='game-wrapper' className='game-wrapper w-full h-[100vh] toolbar-hidden landscape::h-[80vh]'>
+      <div id='game-wrapper' className='game-wrapper w-full h-[100vh]'>
 
         <div id="game-logo" style={{ gridArea: 'logo' }} className="game-logo hidden landscape:flex">
           <Link href={'/'}>
@@ -61,11 +57,11 @@ function Game() {
           <GameCanvas />
         </div>
 
-        <div id="game-toolbar-wrapper">
+        <div id="game-toolbar">
           <Toolbar />
         </div>
 
-        <div id="game-chat" className="game-chat flex flex-col font-[1.2em] w-full landscape:w-[300px] bg-gray-50 dark:bg-ngray landscape:rounded-xl border border-gray-300 dark:border-gray-700">
+        <div id="game-chat" className="game-chat flex flex-col font-[1.2em] w-full landscape:w-[300px] bg-gray-50 dark:bg-ngray landscape:rounded-xl border border-gray-300 dark:border-gray-800">
 
           <div className="chat-content flex flex-grow w-full px-3 pt-[24px]"><p className='w-full'><b>MrnoobcobraTh is now the room owner!</b><span></span></p></div>
 

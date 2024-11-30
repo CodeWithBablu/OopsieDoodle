@@ -77,6 +77,15 @@
   position: relative;
 }
 
+@media (max-aspect-ratio: 1 / 1) {
+  #game-toolbar {
+    grid-area: toolsA / toolsA / toolsB / toolsB;
+    height: var(--UNIT);
+    grid-template-rows: var(--UNIT);
+    grid-template-areas: "preview sizes tools tools actions actions";
+  }
+}
+
 @media (min-aspect-ratio: 1 / 1) and (max-width: 1166px) {
   #game-toolbar {
     height: calc(var(--UNIT) * 2 + var(--BORDER_GAP));
@@ -123,6 +132,33 @@
   flex: 1 1 auto;
   height: 100%;
   width: calc(var(--UNIT) / 2);
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  #game-toolbar .color-preview {
+    display: none;
+  }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  #game-toolbar .colors {
+    display: none;
+  }
+}
+
+@media (max-aspect-ratio: 1 / 1) {
+  .mobile-colors {
+    z-index: 300;
+    --COLOR_ITEM_SIZE: calc(100vw / 13);
+    height: calc(var(--COLOR_ITEM_SIZE) * 2);
+    max-height: 80px;
+    filter: drop-shadow(0 0 0.2em rgba(0, 0, 0, 0.3));
+  }
+
+  .mobile-colors .color {
+    width: var(--COLOR_ITEM_SIZE);
+    height: auto;
+  }
 }
 
 #game-toolbar .toolbar-group-tools {
@@ -234,15 +270,6 @@
   right: 0;
   flex-direction: column;
 
-  .arrow {
-    position: relative;
-    order: 1;
-    width: var(--UNIT);
-    height: calc(var(--UNIT) / 4);
-    background-color: var(--COLOR_TOOL_SIZE_BASE);
-    clip-path: polygon(50% 100%, 25% 0, 75% 0);
-  }
-
   .size {
     cursor: pointer;
     position: relative;
@@ -260,6 +287,14 @@
   }
 }
 
+.clickable {
+  cursor: pointer;
+  position: relative;
+  color: var(--COLOR_TOOL_TEXT);
+  background: var(--COLOR_TOOL_BASE);
+  border-radius: var(--BORDER_RADIUS);
+}
+
 .clickable .icon {
   position: absolute;
   width: 100%;
@@ -269,6 +304,25 @@
   transition: top 65ms ease-in-out;
   animation: none;
 }
+
+.clickable:hover {
+  background: var(--COLOR_TOOL_HOVER);
+}
+.clickable:hover .icon {
+  top: -4px;
+}
+
+/* @keyframes top {
+  0% {
+    background-color: #565a60;
+    background-position: bottom;
+    transform: translateY(0);
+  }
+  100% {
+    background-position: bottom;
+    transform: translateY(20px);
+  }
+} */
 
 /* #game-players {
   grid-area: players;
